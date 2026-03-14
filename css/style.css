@@ -14,8 +14,10 @@
   --font-56px: 3.5rem;
   --font-64px: 4rem;
 
-  --color-primary-yellow: #f7c43a;
-  --color-secondary-yellow: #deb134;
+  /* --color-primary: #f7c43a;
+  --color-secondary: #deb134; */
+  --color-primary: #00aad4;
+  --color-secondary: #0387a8;
   --color-black: #181818;
   --color-black-opacity: rgba(24, 24, 24, 0.8);
   --color-black-opacity-light: rgba(0, 0, 0, 0.6);
@@ -110,7 +112,7 @@ iframe {
 .btn {
   display: inline-block;
   padding: 1em 2em;
-  background-color: var(--color-primary-yellow);
+  background-color: var(--color-primary);
   border-radius: 0.5em;
 }
 .heading {
@@ -125,7 +127,7 @@ iframe {
 }
 .text-highlight {
   font-weight: var(--weight-600);
-  color: var(--color-primary-yellow);
+  color: var(--color-primary);
 }
 /* HEADER AND NAV */
 #primary__header {
@@ -212,7 +214,7 @@ iframe {
   content: "";
   width: 0;
   height: 3px;
-  background-color: var(--color-primary-yellow);
+  background-color: var(--color-primary);
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -229,7 +231,7 @@ iframe {
   color: var(--color-white);
   text-transform: uppercase;
   font-weight: var(--weight-700);
-  border: var(--color-primary-yellow) 3px solid;
+  border: var(--color-primary) 3px solid;
   transition: ease-in 0.3s;
 }
 
@@ -239,15 +241,16 @@ iframe {
 }
 /* HERO */
 .hero__background {
-  background-image: url("https://ik.imagekit.io/cdkwqplf5/pomoc-drogowa-lukow/locked_belt_transport.webp");
+  background-image: url("./assets/nielsej-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   max-width: 100%;
-  min-height: 100%;
+  /* max-height: 100%; */
   position: absolute;
   inset: 0;
   z-index: -10;
+  overflow: clip;
 }
 .hero__container {
   display: flex;
@@ -268,7 +271,7 @@ iframe {
 }
 .heading-highlight {
   font-weight: var(--weight-800);
-  color: var(--color-primary-yellow);
+  color: var(--color-primary);
 }
 .hero__icon {
   display: flex;
@@ -285,7 +288,7 @@ iframe {
 }
 .icon__expand {
   animation: bounce 2s infinite linear;
-  fill: var(--color-primary-yellow);
+  fill: var(--color-primary);
 }
 .contact-item__text {
   font-size: clamp(1rem, 2vw, var(--font-24px));
@@ -297,10 +300,10 @@ iframe {
 .contact-item__number {
   font-size: clamp(1.5rem, 2vw, var(--font-36px));
   font-weight: var(--weight-700);
-  color: var(--color-primary-yellow);
+  color: var(--color-primary);
 }
 .contact__section {
-  background-color: var(--color-primary-yellow);
+  background-color: var(--color-primary);
 }
 .contact-item {
   padding: 1em 0;
@@ -323,7 +326,7 @@ iframe {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background-color: var(--color-secondary-yellow);
+  background-color: var(--color-secondary);
   z-index: -1;
 }
 .contact__phone-container {
@@ -331,6 +334,12 @@ iframe {
 }
 .contact__phone-container .contact-item {
   padding: calc(1em - 15px);
+}
+
+.hero__subtitle {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 1.2rem;
 }
 
 /* MAIN */
@@ -346,12 +355,13 @@ iframe {
 }
 
 .header-container {
-  padding: 1.5em 0 2em 0;
+  padding: 5em 0 2em 0;
   text-align: center;
 }
 
 .offer__header-highlight {
   font-weight: var(--weight-800);
+  color: var(--color-primary);
 }
 .heading-sub-text {
   font-size: clamp(0.9rem, 2vw, var(--font-24px));
@@ -473,14 +483,14 @@ iframe {
 .reach-us__highlight,
 .reach-us__form {
   font-weight: var(--weight-700);
-  color: var(--color-primary-yellow);
+  color: var(--color-primary);
 }
 .reach-us__form {
   text-decoration: underline;
 }
 .reach-us__text {
   font-size: clamp(1.3rem, 3vw, var(--font-36px));
-  color: var(--color-primary-yellow);
+  color: var(--color-primary);
   text-transform: uppercase;
   text-align: center;
 }
@@ -663,7 +673,7 @@ iframe {
     padding: 2em 0;
   }
 }
-@media (min-width: 1050px) and (min-height: 200px) {
+/* @media (min-width: 1050px) and (min-height: 200px) {
   .hero__background {
     min-height: calc(100% + 3.125rem);
   }
@@ -673,12 +683,12 @@ iframe {
   .hero__background {
     min-height: calc(100% + 3.125rem);
   }
-}
-@media (min-height: 440px) {
+} */
+/* @media (min-height: 440px) {
   .hero__background {
     min-height: calc(100% + 3.43rem);
   }
-}
+} */
 @media (max-height: 440px) {
   .nav__btn {
     margin-bottom: 3.125rem;
