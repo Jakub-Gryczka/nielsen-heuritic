@@ -1,0 +1,686 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:root {
+  --family-montserrat: "Montserrat", sans-serif;
+  --font-18px: 1.125rem;
+  --font-20px: 1.25rem;
+  --font-24px: 1.5rem;
+  --font-36px: 2.25rem;
+  --font-48px: 3rem;
+  --font-50px: 3.125rem;
+  --font-56px: 3.5rem;
+  --font-64px: 4rem;
+
+  --color-primary-yellow: #f7c43a;
+  --color-secondary-yellow: #deb134;
+  --color-black: #181818;
+  --color-black-opacity: rgba(24, 24, 24, 0.8);
+  --color-black-opacity-light: rgba(0, 0, 0, 0.6);
+  --color-white: #fff;
+  --about-bg: rgba(24, 24, 24, 0.95);
+  --footer-bg-from: #181919;
+  --footer-bg-to: #232628;
+
+  --icon-width: 3rem;
+  --icon-height: 3rem;
+
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-600: 600;
+  --weight-700: 700;
+  --weight-800: 800;
+  --weight-900: 900;
+
+  --filter-white: invert(100%) sepia(3%) saturate(12%) hue-rotate(346deg)
+    brightness(104%) contrast(104%);
+  --filter-yellow: brightness(0) saturate(100%) invert(87%) sepia(19%)
+    saturate(1696%) hue-rotate(339deg) brightness(99%) contrast(96%);
+  --filter-black: brightness(0) saturate(100%);
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 300 800;
+  src: url("../assets/fonts/Montserrat.woff2") format("woff2-variations");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  src: url("../assets/fonts/MaterialSymbolsOutlined.woff2") format("woff2");
+  font-display: swap;
+}
+.icon {
+  width: var(--font-36px);
+  height: var(--font-36px);
+  filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(346deg)
+    brightness(104%) contrast(104%);
+  display: inline-block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-family: var(--family-montserrat);
+  font-size: var(--font-18px);
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+address {
+  font-style: normal;
+}
+iframe {
+  margin-top: 1.5em;
+  margin: 1.5em auto 0 auto;
+  display: block;
+  max-width: 100%;
+}
+.container {
+  margin: 0 auto;
+  width: min(90%, 1200px);
+}
+.btn {
+  display: inline-block;
+  padding: 1em 2em;
+  background-color: var(--color-primary-yellow);
+  border-radius: 0.5em;
+}
+.heading {
+  font-size: clamp(2.1rem, 3vw, var(--font-64px));
+  font-weight: var(--weight-400);
+  text-transform: uppercase;
+}
+.text {
+  color: var(--color-black-opacity);
+  font-size: clamp(1.06rem, 2vw, var(--font-18px));
+  line-height: 1.6;
+}
+.text-highlight {
+  font-weight: var(--weight-600);
+  color: var(--color-primary-yellow);
+}
+/* HEADER AND NAV */
+#primary__header {
+  background-color: var(--color-black-opacity);
+  position: relative;
+}
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+  position: relative;
+  z-index: 6;
+}
+.logo__img {
+  width: min(45%, 12.5rem);
+}
+.hamburger {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 50%;
+  cursor: pointer;
+
+  appearance: none;
+  background: none;
+  outline: none;
+  border: none;
+}
+.hamburger .bar,
+.hamburger::after,
+.hamburger::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+  margin: 6px 0px;
+  transition: 0.4s;
+}
+.hamburger.is-active .bar {
+  opacity: 0;
+}
+.hamburger.is-active::after {
+  transform: translate(0, -10px) rotate(-45deg);
+}
+.hamburger.is-active::before {
+  transform: translate(0, 8px) rotate(45deg);
+}
+.nav {
+  display: flex;
+  text-transform: uppercase;
+  flex-direction: column;
+  align-items: center;
+  gap: 3em;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  min-height: 60vh;
+  z-index: 5;
+  background-color: var(--color-black);
+  padding-top: 10rem;
+  transition: 0.4s;
+}
+.nav.is-active {
+  left: 0;
+}
+.nav__item {
+  margin-bottom: 1.5em;
+  display: flex;
+  justify-content: center;
+}
+.nav__link {
+  font-size: clamp(1.3rem, 2vw, var(--font-24px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  position: relative;
+}
+.nav__link::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: var(--color-primary-yellow);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: ease-in 0.3s;
+}
+.nav__link:hover::after {
+  width: 100%;
+}
+.nav__link:hover,
+.nav__link:focus {
+  opacity: 0.9;
+}
+.nav__btn {
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-weight: var(--weight-700);
+  border: var(--color-primary-yellow) 3px solid;
+  transition: ease-in 0.3s;
+}
+
+.nav__btn:hover,
+.nav__btn:focus {
+  background-color: transparent;
+}
+/* HERO */
+.hero__background {
+  background-image: url("https://ik.imagekit.io/cdkwqplf5/pomoc-drogowa-lukow/locked_belt_transport.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+}
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 80vh;
+}
+.hero__heading {
+  font-size: clamp(2rem, 5vw, var(--font-56px));
+  color: var(--color-white);
+  font-weight: var(--weight-300);
+  text-transform: uppercase;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.heading-highlight {
+  font-weight: var(--weight-800);
+  color: var(--color-primary-yellow);
+}
+.hero__icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  padding: 2em 0;
+  margin: 0 auto;
+  color: var(--color-white);
+}
+.hero__icon-text {
+  text-transform: uppercase;
+}
+.icon__expand {
+  animation: bounce 2s infinite linear;
+  fill: var(--color-primary-yellow);
+}
+.contact-item__text {
+  font-size: clamp(1rem, 2vw, var(--font-24px));
+  font-weight: var(--weight-700);
+}
+.contact__phone-number {
+  padding: 1.5em 0;
+}
+.contact-item__number {
+  font-size: clamp(1.5rem, 2vw, var(--font-36px));
+  font-weight: var(--weight-700);
+  color: var(--color-primary-yellow);
+}
+.contact__section {
+  background-color: var(--color-primary-yellow);
+}
+.contact-item {
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  text-align: center;
+}
+.contact__icon {
+  color: var(--color-white);
+  position: relative;
+  z-index: 2;
+}
+.contact__icon::before {
+  position: absolute;
+  top: -20%;
+  left: -25%;
+  content: "";
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: var(--color-secondary-yellow);
+  z-index: -1;
+}
+.contact__phone-container {
+  background-color: var(--color-black);
+}
+.contact__phone-container .contact-item {
+  padding: calc(1em - 15px);
+}
+
+/* MAIN */
+.offering {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.offer__secondary,
+.offer__teriary {
+  margin-top: 2em;
+}
+
+.header-container {
+  padding: 1.5em 0 2em 0;
+  text-align: center;
+}
+
+.offer__header-highlight {
+  font-weight: var(--weight-800);
+}
+.heading-sub-text {
+  font-size: clamp(0.9rem, 2vw, var(--font-24px));
+  color: var(--color-black-opacity);
+}
+
+.info-list-icon {
+  width: var(--font-36px);
+  font-weight: var(--weight-700);
+  filter: brightness(0) saturate(100%) invert(87%) sepia(19%) saturate(1696%)
+    hue-rotate(339deg) brightness(99%) contrast(96%);
+}
+.offer__list-item {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.offer__list-item:first-of-type {
+  margin-top: 2em;
+}
+.info-list-text {
+  color: var(--color-black-opacity-light);
+  font-weight: var(--weight-300);
+  flex: 0 1 80%;
+}
+
+/* ADVANTAGES */
+.advantages {
+  margin-top: 2em;
+  position: relative;
+}
+.advantages__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.advantages__background {
+  background-image: url("https://ik.imagekit.io/cdkwqplf5/pomoc-drogowa-lukow/towing_car.webp");
+  filter: brightness(45%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+}
+.advantages__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2em 0;
+}
+
+.advantages__item__number {
+  font-size: clamp(2rem, 2vw, var(--font-48px));
+  font-weight: var(--weight-700);
+}
+.advantages__icon {
+  width: clamp(3.5rem, 4vw, var(--font-64px));
+  height: auto;
+  filter: var(--filter-yellow);
+}
+.advantages__item__text {
+  color: var(--color-white);
+  margin-left: 0.7em;
+}
+
+/* SERVICES */
+#services {
+  display: flex;
+  flex-direction: column;
+}
+.services__item {
+  margin-bottom: 3em;
+}
+.services__item-heading {
+  font-weight: var(--weight-700);
+  font-size: clamp(1.2rem, 2vw, var(--font-24px));
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.services__item-heading .icon {
+  filter: var(--filter-black);
+}
+.services__header-container {
+  padding: 2em 0 2.4em 0;
+}
+.services__heading-highlight {
+  font-weight: var(--weight-800);
+}
+
+/* ABOUT COMPANY */
+#about-company {
+  background-color: var(--about-bg);
+  color: var(--color-white);
+  padding: 2em 0;
+}
+.about-company__heading {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.about-company__text > .text-highlight:first-child {
+  color: var(--color-white);
+}
+.about-company__text {
+  color: inherit;
+}
+.about-company__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5em;
+}
+.reach-us__highlight,
+.reach-us__form {
+  font-weight: var(--weight-700);
+  color: var(--color-primary-yellow);
+}
+.reach-us__form {
+  text-decoration: underline;
+}
+.reach-us__text {
+  font-size: clamp(1.3rem, 3vw, var(--font-36px));
+  color: var(--color-primary-yellow);
+  text-transform: uppercase;
+  text-align: center;
+}
+.reach-us__number {
+  font-size: clamp(1.7rem, 2vw, var(--font-36px));
+  color: var(--color-white);
+  margin-top: 1em;
+}
+/* FOOTER */
+
+.footer {
+  background: linear-gradient(var(--footer-bg-from), var(--footer-bg-to));
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.footer__logo {
+  padding: 2em 0 2.5em 0;
+}
+.footer__logo-img {
+  display: block;
+  max-width: 65%;
+  margin: 0 auto;
+}
+.footer__nav {
+  font-size: clamp(0.95rem, 2vw, var(--font-18px));
+}
+.footer__copy-text,
+.footer__nav,
+.footer__link,
+.footer__copy-attribute {
+  color: var(--color-white);
+}
+.footer__copy-attribute,
+.footer__copy-text {
+  text-align: center;
+}
+.footer__company-name {
+  font-weight: 600;
+}
+.footer__nav-item {
+  margin-bottom: 1em;
+}
+.footer__link:hover,
+.footer__link:active {
+  opacity: 0.8;
+}
+.footer__copy {
+  padding: 2em 1em;
+}
+.footer__copy-text {
+  margin-bottom: 0.5em;
+}
+
+/* ANIMATIONS */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 700px) {
+  .offering {
+    flex-direction: row;
+  }
+  .offer__secondary {
+    flex-direction: row-reverse;
+  }
+  .offer__primary-img,
+  .offer__secondary-img,
+  .offer__teriary-img {
+    flex: 1 1 40%;
+  }
+  .offer-info {
+    flex: 1 1 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+  .logo {
+    display: flex;
+    flex: 1 1 30%;
+  }
+  .logo__img {
+    width: auto;
+  }
+  .nav {
+    position: relative;
+    inset: 0;
+    flex-direction: row;
+    background-color: transparent;
+    padding: 0;
+    min-height: auto;
+  }
+  .nav__list {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    gap: 2.5em;
+    max-width: 100%;
+  }
+  .nav__item {
+    margin: 0;
+  }
+  #primary__header > .container {
+    display: flex;
+  }
+
+  .contact__section {
+    display: flex;
+  }
+  .contact-item {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+  }
+  .contact__section > .container {
+    flex: 1 1 30%;
+    display: flex;
+    justify-content: center;
+    padding: 1em 1.5em;
+  }
+  .contact__phone-container {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .advantages__items {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .services__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+  }
+  #about-company > .container {
+    display: flex;
+    gap: 4em;
+  }
+  .about-company__info-block {
+    flex: 1 1 40%;
+  }
+  .map {
+    flex: 1 1 60%;
+  }
+  .about-company__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .footer-container {
+    padding: 3em;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer__logo {
+    padding: 1em;
+    width: min(45%, 500px);
+  }
+  .footer__nav {
+    flex: 1;
+  }
+  .footer__copy {
+    padding: 2em 0;
+  }
+}
+@media (min-width: 1050px) and (min-height: 200px) {
+  .hero__background {
+    min-height: calc(100% + 3.125rem);
+  }
+}
+@media (max-width: 850px) and (max-height: 600px),
+  (max-height: 600px) and (min-width: 900px) {
+  .hero__background {
+    min-height: calc(100% + 3.125rem);
+  }
+}
+@media (min-height: 440px) {
+  .hero__background {
+    min-height: calc(100% + 3.43rem);
+  }
+}
+@media (max-height: 440px) {
+  .nav__btn {
+    margin-bottom: 3.125rem;
+  }
+}
