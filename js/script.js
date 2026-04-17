@@ -9,31 +9,41 @@ window.onload = function () {
   const number = document.querySelectorAll(".number");
   const advantages = document.querySelector(".advantages");
 
-  const toggleAndRemoveIsActive = () => {
-    menu_btn.classList.toggle("is-active");
-    nav.classList.remove("is-active");
-  };
+  console.log("menu_btn:", menu_btn);
+  console.log("nav:", nav);
+  console.log("logo:", logo);
 
-  for (let i = 0; i < navItem.length; i++) {
-    navItem[i].addEventListener("click", function () {
-      toggleAndRemoveIsActive();
-    });
+  for (let i = 1; i <= 10; i++) {
+    const navItem = document.createElement("li");
+    navItem.className = "nav__item";
+    navItem.innerHTML = `<a href="#rule-${i}" class="nav__link">Zasada ${i}</a>`;
+    const navList = document.querySelector(".nav__list");
+    if (navList) navList.appendChild(navItem);
   }
 
-  navBtn.addEventListener("click", function () {
-    toggleAndRemoveIsActive();
-  });
-
+  // Toggle menu na klik hamburger
   menu_btn.addEventListener("click", function () {
     menu_btn.classList.toggle("is-active");
     nav.classList.toggle("is-active");
-    const expanded = menu_btn.getAttribute("aria-expanded") === "true" || false;
-    menu_btn.setAttribute("aria-expanded", !expanded);
+    menu_btn.setAttribute(
+      "aria-expanded",
+      menu_btn.classList.contains("is-active"),
+    );
+  });
+
+  // Zamknij menu po kliknięciu na item
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".nav__link")) {
+      menu_btn.classList.remove("is-active");
+      nav.classList.remove("is-active");
+      menu_btn.setAttribute("aria-expanded", "false");
+    }
   });
 
   document.addEventListener("scroll", function () {
-    nav.classList.remove("is-active");
     menu_btn.classList.remove("is-active");
+    nav.classList.remove("is-active");
+    menu_btn.setAttribute("aria-expanded", "false");
   });
 
   const speed = 175;
