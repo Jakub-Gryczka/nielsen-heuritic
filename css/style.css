@@ -80,13 +80,14 @@ img {
 }
 h1,
 h2,
-h4,
-p {
+p,
+figure,
+figcaption {
   margin: 0;
   padding: 0;
+  display: block;
 }
 ul,
-ol,
 li {
   margin: 0;
   padding: 0;
@@ -98,12 +99,6 @@ a {
 }
 address {
   font-style: normal;
-}
-iframe {
-  margin-top: 1.5em;
-  margin: 1.5em auto 0 auto;
-  display: block;
-  max-width: 100%;
 }
 .container {
   margin: 0 auto;
@@ -124,10 +119,6 @@ iframe {
   color: var(--color-black-opacity);
   font-size: clamp(1.06rem, 2vw, var(--font-18px));
   line-height: 1.6;
-}
-.text-highlight {
-  font-weight: var(--weight-600);
-  color: var(--color-primary);
 }
 /* HEADER AND NAV */
 #primary__header {
@@ -168,15 +159,6 @@ iframe {
   margin: 6px 0px;
   transition: 0.4s;
 }
-.hamburger.is-active .bar {
-  opacity: 0;
-}
-.hamburger.is-active::after {
-  transform: translate(0, -10px) rotate(-45deg);
-}
-.hamburger.is-active::before {
-  transform: translate(0, 8px) rotate(45deg);
-}
 .nav {
   display: flex;
   text-transform: uppercase;
@@ -192,9 +174,6 @@ iframe {
   background-color: var(--color-black);
   padding-top: 10rem;
   transition: 0.4s;
-}
-.nav.is-active {
-  left: 0;
 }
 .nav__item {
   margin-bottom: 1.5em;
@@ -241,10 +220,10 @@ iframe {
 }
 /* HERO */
 .hero__background {
-  background-image: url("./assets/nielsej-2.jpg");
+  background-image: url("../assets/nielsen-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
   max-width: 100%;
   /* max-height: 100%; */
   position: absolute;
@@ -290,51 +269,6 @@ iframe {
   animation: bounce 2s infinite linear;
   fill: var(--color-primary);
 }
-.contact-item__text {
-  font-size: clamp(1rem, 2vw, var(--font-24px));
-  font-weight: var(--weight-700);
-}
-.contact__phone-number {
-  padding: 1.5em 0;
-}
-.contact-item__number {
-  font-size: clamp(1.5rem, 2vw, var(--font-36px));
-  font-weight: var(--weight-700);
-  color: var(--color-primary);
-}
-.contact__section {
-  background-color: var(--color-primary);
-}
-.contact-item {
-  padding: 1em 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5em;
-  text-align: center;
-}
-.contact__icon {
-  color: var(--color-white);
-  position: relative;
-  z-index: 2;
-}
-.contact__icon::before {
-  position: absolute;
-  top: -20%;
-  left: -25%;
-  content: "";
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background-color: var(--color-secondary);
-  z-index: -1;
-}
-.contact__phone-container {
-  background-color: var(--color-black);
-}
-.contact__phone-container .contact-item {
-  padding: calc(1em - 15px);
-}
 
 .hero__subtitle {
   text-align: center;
@@ -343,15 +277,35 @@ iframe {
 }
 
 /* MAIN */
+
+.rule__card {
+  height: 100%;
+}
+.rule__examples {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  justify-content: center;
+  gap: 0 0.75rem;
+  padding: 1.5rem 0 1.5rem 0;
+}
+.rule__card-example {
+  display: grid;
+  grid-template-rows: 1fr 30%;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+.rule__card-example img {
+  max-width: 80%;
+  height: auto;
+}
+
 .offering {
   margin-top: 1em;
   display: flex;
   flex-direction: column;
   gap: 1em;
-}
-.offer__secondary,
-.offer__teriary {
-  margin-top: 2em;
 }
 
 .header-container {
@@ -367,22 +321,6 @@ iframe {
   font-size: clamp(0.9rem, 2vw, var(--font-24px));
   color: var(--color-black-opacity);
 }
-
-.info-list-icon {
-  width: var(--font-36px);
-  font-weight: var(--weight-700);
-  filter: brightness(0) saturate(100%) invert(87%) sepia(19%) saturate(1696%)
-    hue-rotate(339deg) brightness(99%) contrast(96%);
-}
-.offer__list-item {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  margin-bottom: 1em;
-}
-.offer__list-item:first-of-type {
-  margin-top: 2em;
-}
 .info-list-text {
   color: var(--color-black-opacity-light);
   font-weight: var(--weight-300);
@@ -390,73 +328,11 @@ iframe {
 }
 
 /* ADVANTAGES */
-.advantages {
-  margin-top: 2em;
-  position: relative;
-}
-.advantages__items {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-}
-.advantages__background {
-  background-image: url("https://ik.imagekit.io/cdkwqplf5/pomoc-drogowa-lukow/towing_car.webp");
-  filter: brightness(45%);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  max-width: 100%;
-  min-height: 100%;
-  position: absolute;
-  inset: 0;
-  z-index: -10;
-}
-.advantages__item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2em 0;
-}
-
-.advantages__item__number {
-  font-size: clamp(2rem, 2vw, var(--font-48px));
-  font-weight: var(--weight-700);
-}
-.advantages__icon {
-  width: clamp(3.5rem, 4vw, var(--font-64px));
-  height: auto;
-  filter: var(--filter-yellow);
-}
-.advantages__item__text {
-  color: var(--color-white);
-  margin-left: 0.7em;
-}
 
 /* SERVICES */
 #services {
   display: flex;
   flex-direction: column;
-}
-.services__item {
-  margin-bottom: 3em;
-}
-.services__item-heading {
-  font-weight: var(--weight-700);
-  font-size: clamp(1.2rem, 2vw, var(--font-24px));
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-}
-.services__item-heading .icon {
-  filter: var(--filter-black);
-}
-.services__header-container {
-  padding: 2em 0 2.4em 0;
-}
-.services__heading-highlight {
-  font-weight: var(--weight-800);
 }
 
 /* ABOUT COMPANY */
@@ -464,40 +340,6 @@ iframe {
   background-color: var(--about-bg);
   color: var(--color-white);
   padding: 2em 0;
-}
-.about-company__heading {
-  text-align: center;
-  margin-bottom: 1em;
-}
-.about-company__text > .text-highlight:first-child {
-  color: var(--color-white);
-}
-.about-company__text {
-  color: inherit;
-}
-.about-company__text-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5em;
-}
-.reach-us__highlight,
-.reach-us__form {
-  font-weight: var(--weight-700);
-  color: var(--color-primary);
-}
-.reach-us__form {
-  text-decoration: underline;
-}
-.reach-us__text {
-  font-size: clamp(1.3rem, 3vw, var(--font-36px));
-  color: var(--color-primary);
-  text-transform: uppercase;
-  text-align: center;
-}
-.reach-us__number {
-  font-size: clamp(1.7rem, 2vw, var(--font-36px));
-  color: var(--color-white);
-  margin-top: 1em;
 }
 /* FOOTER */
 
@@ -522,15 +364,14 @@ iframe {
 }
 .footer__copy-text,
 .footer__nav,
-.footer__link,
-.footer__copy-attribute {
+.footer__link {
   color: var(--color-white);
 }
-.footer__copy-attribute,
+
 .footer__copy-text {
   text-align: center;
 }
-.footer__company-name {
+.footer__authors {
   font-weight: 600;
 }
 .footer__nav-item {
@@ -565,14 +406,6 @@ iframe {
 @media (min-width: 700px) {
   .offering {
     flex-direction: row;
-  }
-  .offer__secondary {
-    flex-direction: row-reverse;
-  }
-  .offer__primary-img,
-  .offer__secondary-img,
-  .offer__teriary-img {
-    flex: 1 1 40%;
   }
   .offer-info {
     flex: 1 1 50%;
@@ -611,51 +444,9 @@ iframe {
   #primary__header > .container {
     display: flex;
   }
-
-  .contact__section {
-    display: flex;
-  }
-  .contact-item {
-    flex-direction: row;
-    justify-content: center;
-    padding: 0;
-  }
-  .contact__section > .container {
-    flex: 1 1 30%;
-    display: flex;
-    justify-content: center;
-    padding: 1em 1.5em;
-  }
-  .contact__phone-container {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-  }
-
-  .advantages__items {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .services__items {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2em;
-  }
   #about-company > .container {
     display: flex;
     gap: 4em;
-  }
-  .about-company__info-block {
-    flex: 1 1 40%;
-  }
-  .map {
-    flex: 1 1 60%;
-  }
-  .about-company__text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
   .footer-container {
     padding: 3em;
@@ -673,22 +464,6 @@ iframe {
     padding: 2em 0;
   }
 }
-/* @media (min-width: 1050px) and (min-height: 200px) {
-  .hero__background {
-    min-height: calc(100% + 3.125rem);
-  }
-}
-@media (max-width: 850px) and (max-height: 600px),
-  (max-height: 600px) and (min-width: 900px) {
-  .hero__background {
-    min-height: calc(100% + 3.125rem);
-  }
-} */
-/* @media (min-height: 440px) {
-  .hero__background {
-    min-height: calc(100% + 3.43rem);
-  }
-} */
 @media (max-height: 440px) {
   .nav__btn {
     margin-bottom: 3.125rem;
