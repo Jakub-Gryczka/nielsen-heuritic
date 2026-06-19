@@ -123,7 +123,12 @@ address {
 /* HEADER AND NAV */
 #primary__header {
   background-color: var(--color-black-opacity);
-  position: relative;
+  /* make header stick to top on scroll */
+  position: sticky;
+  top: 0;
+  /* keep header above the sliding nav so hamburger/X is clickable */
+  z-index: 2100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 .logo {
   display: flex;
@@ -142,7 +147,7 @@ address {
   width: 40px;
   height: 50%;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 2200;
   appearance: none;
   background: none;
   outline: none;
@@ -186,15 +191,17 @@ address {
   gap: 3em;
   position: fixed;
   top: 0;
-  right: -25%;
-  width: 25%;
+  right: 0;
+  /* mobile: occupy ~80% of viewport width, capped */
+  width: min(80vw, 420px);
   height: 100vh;
-  z-index: 100;
+  z-index: 2;
   background-color: rgba(24, 24, 24, 0.9);
-  transition: right 0.4s ease;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
 }
 .nav.is-active {
-  right: 0;
+  transform: translateX(0);
 }
 .nav__item {
   margin-bottom: 1.5em;
@@ -246,11 +253,11 @@ address {
   background-repeat: no-repeat;
   background-position: top;
   max-width: 100%;
-  /* max-height: 100%; */
   position: absolute;
   inset: 0;
   z-index: -10;
   overflow: clip;
+  /* opacity: 0.95; */
 }
 .hero__container {
   display: flex;
@@ -327,13 +334,19 @@ address {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  /* prevent overlapping with previous/next sections */
+  clear: both;
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 0;
 }
 .rule:last-of-type {
   padding-bottom: 5rem;
 }
 
 .header-container {
-  padding: 5em 0 2em 0;
+  margin: 5em 0 2em 0;
+  /* padding: 5em 0 2em 0; */
   text-align: center;
 }
 
@@ -351,6 +364,9 @@ address {
   flex: 0 1 80%;
 }
 
+.rule-info > h2 {
+  padding: 0.5rem 0;
+}
 /* ADVANTAGES */
 
 /* SERVICES */
@@ -433,6 +449,38 @@ address {
   }
   .rule-info {
     flex: 1 1 50%;
+  }
+}
+
+/* Mobile fixes: prevent .rule content overflow */
+@media (max-width: 699px) {
+  .rule {
+    padding: 1.5rem 0;
+    gap: 0.75rem;
+  }
+  .header-container {
+    margin: 3em 0 1.5em 0;
+    padding: 0;
+  }
+  .rule__examples {
+    grid-template-columns: 1fr;
+    gap: 3rem 0.5rem;
+    padding: 1rem 0;
+  }
+  .rule__card-example {
+    grid-template-rows: auto 1fr;
+  }
+  .rule__card-example img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .info-list-text,
+  .rule__card-text {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
   }
 }
 
